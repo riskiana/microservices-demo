@@ -7,13 +7,13 @@ import org.junit.Before;
 
 public class AccountsControllerTests extends AbstractAccountControllerTests {
 
-	protected static final Account theAccount = new Account(ACCOUNT_1,
+	protected static final AccountEntity theAccount = new AccountEntity(ACCOUNT_1,
 			ACCOUNT_1_NAME);
 
 	protected static class TestAccountRepository implements AccountRepository {
 
 		@Override
-		public Account findByNumber(String accountNumber) {
+		public AccountEntity findByNumber(String accountNumber) {
 			if (accountNumber.equals(ACCOUNT_1))
 				return theAccount;
 			else
@@ -21,8 +21,8 @@ public class AccountsControllerTests extends AbstractAccountControllerTests {
 		}
 
 		@Override
-		public List<Account> findByOwnerContainingIgnoreCase(String partialName) {
-			List<Account> accounts = new ArrayList<Account>();
+		public List<AccountEntity> findByOwnerContainingIgnoreCase(String partialName) {
+			List<AccountEntity> accounts = new ArrayList<AccountEntity>();
 
 			if (ACCOUNT_1_NAME.toLowerCase().indexOf(partialName.toLowerCase()) != -1)
 				accounts.add(theAccount);

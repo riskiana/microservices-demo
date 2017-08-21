@@ -46,10 +46,10 @@ public class AccountsController {
 	 *             If the number is not recognised.
 	 */
 	@RequestMapping("/accounts/{accountNumber}")
-	public Account byNumber(@PathVariable("accountNumber") String accountNumber) {
+	public AccountEntity byNumber(@PathVariable("accountNumber") String accountNumber) {
 
 		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Account account = accountRepository.findByNumber(accountNumber);
+		AccountEntity account = accountRepository.findByNumber(accountNumber);
 		logger.info("accounts-service byNumber() found: " + account);
 
 		if (account == null)
@@ -70,12 +70,12 @@ public class AccountsController {
 	 *             If there are no matches at all.
 	 */
 	@RequestMapping("/accounts/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
+	public List<AccountEntity> byOwner(@PathVariable("name") String partialName) {
 		logger.info("accounts-service byOwner() invoked: "
 				+ accountRepository.getClass().getName() + " for "
 				+ partialName);
 
-		List<Account> accounts = accountRepository
+		List<AccountEntity> accounts = accountRepository
 				.findByOwnerContainingIgnoreCase(partialName);
 		logger.info("accounts-service byOwner() found: " + accounts);
 

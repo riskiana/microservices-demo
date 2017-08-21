@@ -20,7 +20,7 @@ public abstract class AbstractAccountControllerTests {
 	@Test
 	public void validAccountNumber() {
 		Logger.getGlobal().info("Start validAccountNumber test");
-		Account account = accountController.byNumber(ACCOUNT_1);
+		AccountEntity account = accountController.byNumber(ACCOUNT_1);
 
 		Assert.assertNotNull(account);
 		Assert.assertEquals(ACCOUNT_1, account.getNumber());
@@ -31,13 +31,13 @@ public abstract class AbstractAccountControllerTests {
 	@Test
 	public void validAccountOwner() {
 		Logger.getGlobal().info("Start validAccount test");
-		List<Account> accounts = accountController.byOwner(ACCOUNT_1_NAME);
+		List<AccountEntity> accounts = accountController.byOwner(ACCOUNT_1_NAME);
 		Logger.getGlobal().info("In validAccount test");
 
 		Assert.assertNotNull(accounts);
 		Assert.assertEquals(1, accounts.size());
 
-		Account account = accounts.get(0);
+		AccountEntity account = accounts.get(0);
 		Assert.assertEquals(ACCOUNT_1, account.getNumber());
 		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
 		Logger.getGlobal().info("End validAccount test");
@@ -46,13 +46,13 @@ public abstract class AbstractAccountControllerTests {
 	@Test
 	public void validAccountOwnerMatches1() {
 		Logger.getGlobal().info("Start validAccount test");
-		List<Account> accounts = accountController.byOwner("Keri");
+		List<AccountEntity> accounts = accountController.byOwner("Keri");
 		Logger.getGlobal().info("In validAccount test");
 
 		Assert.assertNotNull(accounts);
 		Assert.assertEquals(1, accounts.size());
 
-		Account account = accounts.get(0);
+		AccountEntity account = accounts.get(0);
 		Assert.assertEquals(ACCOUNT_1, account.getNumber());
 		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
 		Logger.getGlobal().info("End validAccount test");
@@ -61,13 +61,13 @@ public abstract class AbstractAccountControllerTests {
 	@Test
 	public void validAccountOwnerMatches2() {
 		Logger.getGlobal().info("Start validAccount test");
-		List<Account> accounts = accountController.byOwner("keri");
+		List<AccountEntity> accounts = accountController.byOwner("keri");
 		Logger.getGlobal().info("In validAccount test");
 
 		Assert.assertNotNull(accounts);
 		Assert.assertEquals(1, accounts.size());
 
-		Account account = accounts.get(0);
+		AccountEntity account = accounts.get(0);
 		Assert.assertEquals(ACCOUNT_1, account.getNumber());
 		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
 		Logger.getGlobal().info("End validAccount test");
