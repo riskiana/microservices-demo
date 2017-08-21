@@ -41,3 +41,5 @@ in the second and third windows.
  1. Allow it to register itself
  1. Kill the first account-server and see the web-server switch to using the new account-server - no loss of service.
 
+
+ * Added notes for git test
