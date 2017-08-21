@@ -1,7 +1,9 @@
 package io.pivotal.microservices.services.web;
 
+import io.pivotal.microservices.accounts.AccountEntity;
+import io.pivotal.microservices.accounts.AccountHandler;
 import io.pivotal.microservices.services.web.Account;
-
+import io.pivotal.microservices.accounts.AccountRepository;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -27,6 +29,10 @@ public class WebAccountsController {
 
 	@Autowired
 	protected WebAccountsService accountsService;
+
+	public AccountHandler accountHandler;
+
+
 
 	protected Logger logger = Logger.getLogger(WebAccountsController.class
 			.getName());
@@ -93,4 +99,36 @@ public class WebAccountsController {
 			return ownerSearch(model, searchText);
 		}
 	}
-}
+
+	@RequestMapping(value = "/accounts/create", method = RequestMethod.GET)
+	public String createForm(Model model) {
+		model.addAttribute("searchCriteria", new SearchCriteria());
+		return "accountCreate";
+	}
+
+	@RequestMapping(value = "/accounts/docreate")
+	public String doCreate(Model model, SearchCriteria criteria,
+						   BindingResult result) {
+		logger.info("web-service create() invoked: " + criteria);
+		final AccountRepository accountRepository;
+		//criteria.validate(result);
+
+
+
+		if (result.hasErrors())
+			return "accountCreate";
+		String accountNumber = criteria.getAccountNumber();
+
+		accountHandler.createAccount(criteria);
+		return byNumber(model,accountNumber);
+	}
+
+		/*String accountNumber = criteria.getAccountNumber();
+		if (StringUtils.hasText(accountNumber)) {
+			return byNumber(model, accountNumber);
+		} else {
+			String searchText = criteria.getSearchText();
+			return ownerSearch(model, searchText);
+		}*/
+	}
+

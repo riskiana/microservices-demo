@@ -4,10 +4,11 @@
 
 <head th:replace="header :: copy"></head>
 
+
 <body>
 
 	<h1>Microservices Demo - Web Server</h1>
-	<h3>Overview</h3>
+	<!--<h3>Overview</h3>
 	<ul>
 		<li>Demo defines a simple web-application for accessing accounts
 			data.</li>
@@ -15,7 +16,7 @@
 			interface to a Accounts microservice.</li>
 	</ul>
 
-	<h3>The Demo</h3>
+	<h3>The Demo</h3>-->
 
 	<ul class="openlist">
 		<li>Eureka Dashboard: <a
@@ -27,9 +28,10 @@
 		<li>Fetch by name: <a th:href="@{/accounts/owner/Keri}">/accounts/owner/Keri</a></li>
 
 		<li>Account <a th:href="@{/accounts/search}">Search</a></li>
+		<li>Create New Account <a th:href="@{/accounts/create}">create</a></li>
 	</ul>
 
-	<h3>Spring Boot URLs</h3>
+	<!--<h3>Spring Boot URLs</h3>
 	<p>For those interested, Spring Boot provides RESTful URLs for
 		interrogating your application (they return JSON format data):</p>
 
@@ -41,7 +43,7 @@
 		<li><a th:href="@{/info}">Application information</a></li>
 		<li><a th:href="@{/metrics}">Application metrics</a></li>
 		<li><a th:href="@{/trace}">Request call trace</a></li>
-	</ul>
+	</ul>-->
 
 	<div th:replace="footer :: copy"></div>
 
